@@ -1,6 +1,5 @@
 (function() {
-	var siteTable = $('#siteTable'),
-		uniques = {},
+	var uniques = {},
 	    filtered = 0;
 	
 	function nearScrollBottom(e, threshold) {
@@ -50,6 +49,15 @@
 	function injectContent(entries) {
 		$('#siteTable div.thing:last').after(entries);
 	};
+	
+	function openLinksInPopups() {
+		$('#siteTable div.thing .title a').live('click', function(e) {
+			e.preventDefault();
+			window.open($(e.currentTarget).attr('href'));
+		});
+	};
+	
+	openLinksInPopups();
 	
 	$(window).scroll(function(e) {
 		if (nearScrollBottom(e, 600)) {
